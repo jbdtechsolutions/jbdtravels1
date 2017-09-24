@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- <context:component-scan base-package="com.test" /> <bean id="tripwebDetails" 
+		class="com.test.TripWebController" /> <mvc:annotation-driven content-negotiation-manager="contentManager" 
+		/> -->
+
+	<!-- <bean id="helloBean" class="com.jt.poc.test.SimpleHelloBean"> <property 
+		name="name" value="BGP L2" /> </bean> -->
+	<bean id="customerController" class="com.jt.controller.CustomerController">
+		<property name="customerService" ref="customerService"/> 
+	</bean>
+
+	<bean id="customerService" class="com.jt.service.customer.CustomerService">
+		<property name="customerDAOImpl" ref="customerDAOImpl" />
+	</bean>
+
+	<bean id="customerDAOImpl" class="com.jt.dao.customer.CustomerDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>
